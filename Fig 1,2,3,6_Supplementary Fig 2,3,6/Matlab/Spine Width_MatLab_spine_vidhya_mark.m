@@ -1,8 +1,7 @@
-function out = spine_vidhya_mark(namepattern,pixelsize)
-%function out = spine_vidhya_mark(namepattern,pixelsize)
+function out = spine_mark(namepattern,pixelsize)
+%function out = spine_mark(namepattern,pixelsize)
 %mark spines to determine line profiles and spine size. 
-%Specifically for Vidhya's Science paper in March 2018, i.e. some special
-%assumptions (as averaging etc)
+
 %data are automatically saved to file
 %input: namepattern: filenamepattern (wildcards allowed) of image files to
 %       process
@@ -17,7 +16,7 @@ for kf = 1:nfiles%for all files
     newname = extend_filename(files(kf).name,'_LP','ext','.mat');%for saving line profiles
     out{kf} = newname;
     
-    for ki = 1:-1:1%read 10 frames (Vidhya-specific)
+    for ki = 1:-1:1%read 10 frames (User-specific)
         data(:,:,ki) = imread(files(kf).name,ki);%use imread to be more universal
         
     end
@@ -39,7 +38,7 @@ for kf = 1:nfiles%for all files
         unit = 'um';
     end
     meanimg = mean(data,3);
-    meanimg = imfilter(meanimg,ones(3)/9);%Vidhya uses normally in imagej a 3x3 mean filter for smoothing, wo we implement it also here.
+    meanimg = imfilter(meanimg,ones(3)/9);
     
     
     figure;imagesc(meanimg);
