@@ -1,5 +1,5 @@
-//Two generate a two-channel stack image from two single-channel images
-//Input files should be .tif or .tiff files with suffixes "Cx" with x specifying channel number.
+//To generate a two-channel stack image from two single-channel images
+//Input files should be .tif or .tiff files with suffixes "Cx" with x specifying channel number. (Default is C0 = green, C1 = red)
 //The images from two different channels should be saved in separate folders.
 //The name of files from the same image acquisition should only be different by the channel number.
 
@@ -29,7 +29,8 @@ if (list1.length == list2.length) {
 		//Defalt is for .tif files. If the extension is tiff, use the code below instead:
 		//open(file2+substring(t1,0,t1.length-6)+"1.tiff");
 		t2 = getTitle();
-		run("Merge Channels...", "c1=["+t2+"] c2=["+t1+"] create");
+		//If C0 = green, C1 = red:
+		run("Merge Channels...", "c1=["+t2+"] c2=["+t1+"] create"); //Need to be custom-modified if other color combination was used.
 		saveAs("Tiff", file3+substring(name,0,name.length-3)+".tiff");
 		print(substring(name,0,name.length-3)+" finished");
 		close();		
