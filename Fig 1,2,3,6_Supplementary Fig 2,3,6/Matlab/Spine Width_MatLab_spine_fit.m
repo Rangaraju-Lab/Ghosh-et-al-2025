@@ -1,7 +1,7 @@
-function newout = spine_vidhya_fit(namepattern)
-%function out = spine_vidhya_fit(namepattern)
-%assumes that spine-line-profiles have been generated with spine_vidhya_mark
-%input: namepattern for ...LP.mat files from spine_vidhya_mark with line
+function newout = spine_fit(namepattern)
+%function out = spine_fit(namepattern)
+%assumes that spine-line-profiles have been generated with spine_mark
+%input: namepattern for ...LP.mat files from spine_mark with line
 %profiles of spines
 %A gaussian + offset will be fittet. Figures of fits will be saved for each
 %file and each spine
@@ -54,7 +54,7 @@ for kf = 1:nfiles
         fwhm(kf,ks) = betafwhm(3);%save for later
         msearray(kf,ks) = MSE;
         try
-            time(kf) = vidhya_spine_get_time(matfiles(kf).name);
+            time(kf) = spine_get_time(matfiles(kf).name);
         catch
             time(kf) = 0;
             warning('Cannot read time from filename. Setting it to 0')
