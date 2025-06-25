@@ -30,11 +30,11 @@ function findRoiWithName(roiName) {
 
 
 //Specify input directory. 
-file1= "Z:/DATA/Ruolin New/MitoATP/mitogcamp plot profile/plot profile/selected/";
+file1= "";
 list1= getFileList(file1);
 
 //Specify output directory, create a new folder if file2 is not exisiting
-file2= "Z:/DATA/Ruolin New/MitoATP/mitogcamp plot profile/plot profile data 060225/";
+file2= "";
 File.makeDirectory(file2);
 
 //Set batch mode
