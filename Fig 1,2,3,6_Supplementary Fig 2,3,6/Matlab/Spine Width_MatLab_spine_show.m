@@ -1,5 +1,5 @@
-function  spine_vidhya_show(filename)
-%function spine_vidhya_show(filename)
+function  spine_show(filename)
+%function spine_show(filename)
 %  load an ..._LP.mat and show the spines marked.
 
 
@@ -7,12 +7,12 @@ function  spine_vidhya_show(filename)
 vv = load(filename);
 nfiles = length(vv.files);    
 for kf = 1
-    for ki = 10:-1:1%read 10 frames (Vidhya-specific)
+    for ki = 10:-1:1%read 10 frames 
         data(:,:,ki) = imread(vv.files(kf).name,ki);%use imread to be more universal
         
     end
     meanimg = mean(data,3);
-    meanimg = imfilter(meanimg,ones(3)/9);%Vidhya uses normally in imagej a 3x3 mean filter for smoothing, wo we implement it also here.
+    meanimg = imfilter(meanimg,ones(3)/9);
     
     
     figure;imagesc(meanimg);
